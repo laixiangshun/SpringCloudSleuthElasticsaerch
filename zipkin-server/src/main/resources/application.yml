@@ -1,0 +1,28 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 9411
+spring:
+  application:
+    name: zipkin-server
+  sleuth:
+    enabled: false #表示当前程序不使用sleuth
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+zipkin:
+  storage:
+    type: elasticsearch
+    StorageComponent: elasticsearch
+    elasticsearch:
+      cluster: elasticsearch
+      max-requests: 60
+      index: zipkin
+      index-shards: 6
+      index-replicas: 1
+      hosts: localhost:9200
